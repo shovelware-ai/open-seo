@@ -15,6 +15,15 @@ minimumReleaseAgeExclude:
   # the window. Exact-pinned in package.json.
   - "alchemy"
   - "@distilled.cloud/*"
+  # TEMPORARY (remove after 2026-09-12): playwright 1.63.0 published
+  # 2026-09-04, inside the 8-day window. It is the ONLY release carrying a
+  # Chromium at or above 152.0.7977.82, the fix for CVE-2026-85046 (V8 type
+  # confusion, actively exploited). 1.59.1 resolves Chromium 147.0.7727.15,
+  # five majors behind. Same reasoning as the brace-expansion/fast-uri/js-yaml
+  # entries above: a known exploited bug outranks the cooling-off period.
+  - "@playwright/test"
+  - "playwright"
+  - "playwright-core"
 
 # Advisories triaged as not applicable. Re-review when the parent updates.
 # - GHSA-67mh-4wv8-2f99: esbuild <=0.24.2 dev-server CORS. Only reachable via
