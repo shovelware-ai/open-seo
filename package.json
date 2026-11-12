@@ -114,7 +114,7 @@
     "cn": "^0.3.0",
     "country-flag-icons": "^1.6.20",
     "drizzle-orm": "^0.45.2",
-    "fast-xml-parser": "^5.4.1",
+    "fast-xml-parser": "^5.12.0",
     "htmlparser2": "^10.1.0",
     "http-message-sig": "0.3.0",
     "jose": "^6.0.12",
