@@ -29,6 +29,11 @@ overrides:
   js-yaml: "^4.3.2"
   "nanoid@3": "^3.3.18"
   postcss: "^8.5.23"
-  undici: "^7.29.1"
+  undici: "^7.30.1"
   # GHSA-rgj7-g3m4-5g8c — Miniflare 4 pins 0.34.5; 0.35.4 fixes bundled libheif.
-  "miniflare>sharp": "0.35.4"
+  "miniflare>sharp": "^0.35.5"
+  seroval: "^1.6.11"
+  vite@7: "^7.3.7"
+  source-map-js: "^1.2.2"
+  "zod@4": "^4.6.6"
+  "@vitest/mocker@4": "^4.1.12"
