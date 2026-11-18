@@ -94,10 +94,10 @@ const makeResources = (stage: string, usesD1: boolean) => {
       ? {
           DB: Cloudflare.D1.Database("DB", {
             name: prod ? PROD_NAMES.d1 : `open-seo-db-${stage}`,
-            // drizzle-generated SQL migrations. Alchemy keeps its own
-            // bookkeeping table and, on the first deploy, copies the applied
-            // history from the wrangler-compatible d1_migrations table.
-            migrations: { dir: "drizzle/sqlite", table: "d1_migrations" },
+            // LOCAL PATCH (shovelware): no `migrations` here. alchemy
+            // 2.0.0-beta.85 refuses drizzle-kit's pre-v1 layout, so
+            // scripts/selfhost-migrate.mjs applies drizzle/sqlite with
+            // wrangler (the d1_migrations table) before each deploy.
           }).pipe(keep),
         }
       : {}),
