@@ -48,8 +48,8 @@ importers:
         specifier: ^1.2.3
         version: 1.2.3
       '@every-app/sdk':
-        specifier: 0.3.0-rc.14
-        version: 0.3.0-rc.14(@tanstack/react-start@1.168.60(esbuild@0.28.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rolldown@1.2.14)(rollup@4.59.0)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))
+        specifier: 0.3.0
+        version: 0.3.0(@tanstack/react-start@1.168.60(esbuild@0.28.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rolldown@1.2.14)(rollup@4.59.0)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))
       '@modelcontextprotocol/client':
         specifier: 2.3.1
         version: 2.3.1
@@ -203,10 +203,10 @@ importers:
         version: 4.20260702.1
       '@distilled.cloud/cloudflare':
         specifier: 0.28.2
-        version: 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93)
+        version: 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103)
       '@effect/platform-node':
-        specifier: 4.0.0-beta.93
-        version: 4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1)
+        specifier: 4.0.0-beta.103
+        version: 4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1)
       '@libsql/client':
         specifier: ^0.15.15
         version: 0.15.15
@@ -242,7 +242,7 @@ importers:
         version: 6.1.2(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.2.14)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))
       alchemy:
         specifier: 2.0.0-beta.61
-        version: 2.0.0-beta.61(patch_hash=0afadf1f3698b6e611c6e55d676c63dae758c8b7e088c00b3b4c582e55fa579b)(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(@types/node@22.19.11)(@types/react@19.2.14)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260702.1)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.1)(kysely@0.29.2)(mysql2@3.24.4(@types/node@22.19.11))(pg@8.22.0)(postgres@3.4.9)(sql.js@1.14.1))(effect@4.0.0-beta.93)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))(workerd@1.20261012.1)(ws@8.21.0)
+        version: 2.0.0-beta.61(patch_hash=0afadf1f3698b6e611c6e55d676c63dae758c8b7e088c00b3b4c582e55fa579b)(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(@types/node@22.19.11)(@types/react@19.2.14)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260702.1)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.1)(kysely@0.29.2)(mysql2@3.24.4(@types/node@22.19.11))(pg@8.22.0)(postgres@3.4.9)(sql.js@1.14.1))(effect@4.0.0-beta.103)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))(workerd@1.20261012.1)(ws@8.22.2)
       cf:
         specifier: 1.0.0-beta.14
         version: 1.0.0-beta.14(@types/node@22.19.11)
@@ -256,11 +256,11 @@ importers:
         specifier: ^0.31.10
         version: 0.31.10
       effect:
-        specifier: 4.0.0-beta.93
-        version: 4.0.0-beta.93
+        specifier: 4.0.0-beta.103
+        version: 4.0.0-beta.103
       everyapp:
-        specifier: 0.3.0-rc.14
-        version: 0.3.0-rc.14(@types/node@22.19.11)
+        specifier: 0.3.0
+        version: 0.3.0(@types/node@22.19.11)
       knip:
         specifier: ^5.88.1
         version: 5.88.1(@types/node@22.19.11)(typescript@5.9.3)
@@ -1032,17 +1032,17 @@ packages:
   '@drizzle-team/brocli@0.10.2':
     resolution: {integrity: sha512-z33Il7l5dKjUgGULTqBsQBQwckHh5AbIuxhdsIxDDiZAzBOrZO6q9ogcWC65kU382AfynTfgNumVcNIjuIua6w==}
 
-  '@effect/platform-node-shared@4.0.0-beta.93':
-    resolution: {integrity: sha512-XUqZ2u5GglBqY8q2jj4Q7GjN5K/enedk8auZM9rY/l5a/myaQTrQp3QnvpIK4/Yg0WFjLGuctGPMKWRk3OLIrA==}
-    engines: {node: '>=18.0.0'}
+  '@effect/platform-node-shared@4.1.3':
+    resolution: {integrity: sha512-zcFjbgWuT66NJHi6cCx8/BywQ/pR8I3wSd4GsNolMjwlvMRDELUodTxEPOhwt+sAVekueFPf1lyCS2I05Svnfw==}
+    engines: {node: '>=22.19.0'}
     peerDependencies:
-      effect: ^4.0.0-beta.93
+      effect: ^4.1.3
 
-  '@effect/platform-node@4.0.0-beta.93':
-    resolution: {integrity: sha512-QagsCGR0ZOXaCQqS5qGR2mcDng4LiP2bYhiiX1D6UC8cT9vsusVVOHiJWn8CupeDx+yVnPcu81QmA/SDt6GM1w==}
+  '@effect/platform-node@4.0.0-beta.103':
+    resolution: {integrity: sha512-VD8fbpendwFokMwzC7/MxazjhEVDihPC5NZtomYEyZwGaA1LXMvwP1y8pfXwfshUkG56TN4EMQqzu72c0B9FhA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.0-beta.93
+      effect: ^4.0.0-beta.103
       ioredis: ^5.7.0
 
   '@effect/vitest@4.0.0-beta.93':
@@ -1524,8 +1524,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@every-app/sdk@0.3.0-rc.14':
-    resolution: {integrity: sha512-k0YKXi3XopWX5QTm/Ejopra4XpBGsz99HVUz8EGsIMGxzEXeJqlTubjXqDwSlYyEDZgIS+99/yT+2nG6HNZ0NQ==}
+  '@every-app/sdk@0.3.0':
+    resolution: {integrity: sha512-TvVkVsBk7+fZXesnjENoxFx+ZlmyINwrrM6xRUxSXt46ZCi5QWylPu5pjWlx2Ufn89RGdVDy+tWbOKJ/w3VjJw==}
     peerDependencies:
       '@tanstack/react-start': ^1.168.61
     peerDependenciesMeta:
@@ -3592,6 +3592,9 @@ packages:
   '@types/ws@8.18.1':
     resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
+  '@types/ws@8.18.2':
+    resolution: {integrity: sha512-67MQl+fpWKVTT1NYdnmo3U4sc/xPo/zQBncVnI74qmQa0z/b+1g6iYqNmGCPbxO+zz2aklb08a0oHfegiVd0/w==}
+
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
     deprecated: Potential CWE-502 - Update to 1.3.1 or higher
@@ -4517,8 +4520,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@4.0.0-beta.93:
-    resolution: {integrity: sha512-wNS5MKFa3C42uBfIDik2oJ78lhpoYz2hN4oBR0229BeeDCIrkg/FiOvoiPGdCVlWa7MEKxEL5I0f8AILVHSD9A==}
+  effect@4.0.0-beta.103:
+    resolution: {integrity: sha512-pE8TxF4m2tQzVI+77dIlm3s+81TACV1AiX1JEkvY+zVuxgQQ8aGSkqXNJF6b/ST+coCSk5cUdbULpQ7sm4oHyw==}
 
   electron-to-chromium@1.5.425:
     resolution: {integrity: sha512-QvPtl41EUOnuT1HBvMKgxXRIaHNcagBPs50u7VULzhZXaGfqTbZyE16LQsctZ/RQHlGu+FOWeDTR4mY6YbeF1g==}
@@ -4659,8 +4662,8 @@ packages:
     resolution: {integrity: sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA==}
     engines: {node: '>=18.0.0'}
 
-  everyapp@0.3.0-rc.14:
-    resolution: {integrity: sha512-OZPDhXc4K6DsEsF6m0SXNMKC14Qr1YV9karPmOBwk5woOpZrbSAbx2LB2TvmvRRxklGAqOtJAK7LtfhPPDMV5w==}
+  everyapp@0.3.0:
+    resolution: {integrity: sha512-dyfs9+NP1USZZoPkSyQiT17KeG+Y0kk7A2AHHMepPt1mh3lMpAn/VzeTHt8bE7GcBRXNcVR9oBBtJ+iR821Z+w==}
     engines: {node: '>=22.18.0'}
     hasBin: true
 
@@ -4696,8 +4699,8 @@ packages:
   extend@3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
 
-  fast-check@4.8.0:
-    resolution: {integrity: sha512-GOJ158CUMnN6cSahsv4+ExARvIDuzzinFjkp0E9WtiBa5zcVeLozVkWaE4IzFcc+Y48Wp1EDlUZsXRyAztQcSg==}
+  fast-check@4.10.2:
+    resolution: {integrity: sha512-iK2f+YrcmoeGqk6fA0ea2bptcu/itMIm4NfEozq6N25+aG6h7s5HZbB/k1aV7b5w5sFLMCbbtRUsTVR+BgC3xw==}
     engines: {node: '>=12.17.0'}
 
   fast-deep-equal@3.1.3:
@@ -7117,6 +7120,18 @@ packages:
       utf-8-validate:
         optional: true
 
+  ws@8.22.2:
+    resolution: {integrity: sha512-/rEZ2ejown2N5gxVTHUu9bVVC7ttu0/Tgzf5hbTOixR3Fs7mbbXgn2DbdbcKgJOmpQMtrIUWivtYuVMnp/W/yA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   wsl-utils@1.0.0:
     resolution: {integrity: sha512-Hl0ZOAs672vg+06kfujwRhoS6/jehvULrlFkuF2dRu6pHgA8U06h3xqNIqNNU1LTXPcedxByAR4GS6pwQK0mgA==}
     engines: {node: '>=20'}
@@ -7965,24 +7980,24 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@distilled.cloud/aws@0.28.2(effect@4.0.0-beta.93)':
+  '@distilled.cloud/aws@0.28.2(effect@4.0.0-beta.103)':
     dependencies:
       '@aws-crypto/crc32': 5.2.0
       '@aws-crypto/util': 5.2.0
       '@aws-sdk/credential-providers': 3.1080.0
       '@aws-sdk/types': 3.973.15
-      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.93)
+      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.103)
       '@smithy/shared-ini-file-loader': 4.6.6
       '@smithy/types': 4.15.1
       '@smithy/util-base64': 4.5.6
       aws4fetch: 1.0.20
-      effect: 4.0.0-beta.93
+      effect: 4.0.0-beta.103
       fast-xml-parser: 5.12.0
 
-  '@distilled.cloud/axiom@0.28.2(effect@4.0.0-beta.93)':
+  '@distilled.cloud/axiom@0.28.2(effect@4.0.0-beta.103)':
     dependencies:
-      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.93)
-      effect: 4.0.0-beta.93
+      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.103)
+      effect: 4.0.0-beta.103
 
   '@distilled.cloud/cloudflare-rolldown-plugin@0.12.2(rolldown@1.0.1)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(workerd@1.20261012.1)':
     dependencies:
@@ -7995,46 +8010,46 @@ snapshots:
     transitivePeerDependencies:
       - workerd
 
-  '@distilled.cloud/cloudflare-runtime@0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93))(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(effect@4.0.0-beta.93)':
+  '@distilled.cloud/cloudflare-runtime@0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103))(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(effect@4.0.0-beta.103)':
     dependencies:
       '@alchemy.run/node-utils': 0.0.5
-      '@distilled.cloud/cloudflare': 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93)
-      effect: 4.0.0-beta.93
+      '@distilled.cloud/cloudflare': 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103)
+      effect: 4.0.0-beta.103
       workerd: 1.20260704.1
     optionalDependencies:
-      '@effect/platform-node': 4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1)
+      '@effect/platform-node': 4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1)
 
-  '@distilled.cloud/cloudflare-vite-plugin@0.12.2(@distilled.cloud/cloudflare-runtime@0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93))(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(effect@4.0.0-beta.93))(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93))(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(effect@4.0.0-beta.93)(rolldown@1.0.1)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(workerd@1.20261012.1)':
+  '@distilled.cloud/cloudflare-vite-plugin@0.12.2(@distilled.cloud/cloudflare-runtime@0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103))(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(effect@4.0.0-beta.103))(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103))(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(effect@4.0.0-beta.103)(rolldown@1.0.1)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(workerd@1.20261012.1)':
     dependencies:
-      '@distilled.cloud/cloudflare': 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93)
+      '@distilled.cloud/cloudflare': 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103)
       '@distilled.cloud/cloudflare-rolldown-plugin': 0.12.2(rolldown@1.0.1)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(workerd@1.20261012.1)
-      '@distilled.cloud/cloudflare-runtime': 0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93))(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(effect@4.0.0-beta.93)
-      effect: 4.0.0-beta.93
+      '@distilled.cloud/cloudflare-runtime': 0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103))(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(effect@4.0.0-beta.103)
+      effect: 4.0.0-beta.103
       vite: 8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)
     optionalDependencies:
-      '@effect/platform-node': 4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1)
+      '@effect/platform-node': 4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1)
     transitivePeerDependencies:
       - rolldown
       - workerd
 
-  '@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93)':
+  '@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103)':
     dependencies:
-      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.93)
-      effect: 4.0.0-beta.93
+      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.103)
+      effect: 4.0.0-beta.103
 
-  '@distilled.cloud/core@0.28.2(effect@4.0.0-beta.93)':
+  '@distilled.cloud/core@0.28.2(effect@4.0.0-beta.103)':
     dependencies:
-      effect: 4.0.0-beta.93
+      effect: 4.0.0-beta.103
 
-  '@distilled.cloud/neon@0.28.2(effect@4.0.0-beta.93)':
+  '@distilled.cloud/neon@0.28.2(effect@4.0.0-beta.103)':
     dependencies:
-      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.93)
-      effect: 4.0.0-beta.93
+      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.103)
+      effect: 4.0.0-beta.103
 
-  '@distilled.cloud/planetscale@0.28.2(effect@4.0.0-beta.93)':
+  '@distilled.cloud/planetscale@0.28.2(effect@4.0.0-beta.103)':
     dependencies:
-      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.93)
-      effect: 4.0.0-beta.93
+      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.103)
+      effect: 4.0.0-beta.103
 
   '@dotenvx/dotenvx@1.75.1':
     dependencies:
@@ -8059,19 +8074,19 @@ snapshots:
 
   '@drizzle-team/brocli@0.10.2': {}
 
-  '@effect/platform-node-shared@4.0.0-beta.93(effect@4.0.0-beta.93)':
+  '@effect/platform-node-shared@4.1.3(effect@4.0.0-beta.103)':
     dependencies:
-      '@types/ws': 8.18.1
-      effect: 4.0.0-beta.93
-      ws: 8.21.0
+      '@types/ws': 8.18.2
+      effect: 4.0.0-beta.103
+      ws: 8.22.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1)':
+  '@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1)':
     dependencies:
-      '@effect/platform-node-shared': 4.0.0-beta.93(effect@4.0.0-beta.93)
-      effect: 4.0.0-beta.93
+      '@effect/platform-node-shared': 4.1.3(effect@4.0.0-beta.103)
+      effect: 4.0.0-beta.103
       ioredis: 5.11.1
       mime: 4.1.0
       undici: 8.12.1
@@ -8079,9 +8094,9 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@effect/vitest@4.0.0-beta.93(effect@4.0.0-beta.93)(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))':
+  '@effect/vitest@4.0.0-beta.93(effect@4.0.0-beta.103)(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))':
     dependencies:
-      effect: 4.0.0-beta.93
+      effect: 4.0.0-beta.103
       vitest: 5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))
 
   '@emnapi/core@1.10.0':
@@ -8353,7 +8368,7 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@every-app/sdk@0.3.0-rc.14(@tanstack/react-start@1.168.60(esbuild@0.28.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rolldown@1.2.14)(rollup@4.59.0)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))':
+  '@every-app/sdk@0.3.0(@tanstack/react-start@1.168.60(esbuild@0.28.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rolldown@1.2.14)(rollup@4.59.0)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))':
     dependencies:
       jose: 6.2.12
     optionalDependencies:
@@ -10133,6 +10148,10 @@ snapshots:
     dependencies:
       '@types/node': 22.19.11
 
+  '@types/ws@8.18.2':
+    dependencies:
+      '@types/node': 22.19.11
+
   '@ungap/structured-clone@1.3.0': {}
 
   '@vercel/oidc@3.2.0': {}
@@ -10229,21 +10248,21 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  alchemy@2.0.0-beta.61(patch_hash=0afadf1f3698b6e611c6e55d676c63dae758c8b7e088c00b3b4c582e55fa579b)(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(@types/node@22.19.11)(@types/react@19.2.14)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260702.1)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.1)(kysely@0.29.2)(mysql2@3.24.4(@types/node@22.19.11))(pg@8.22.0)(postgres@3.4.9)(sql.js@1.14.1))(effect@4.0.0-beta.93)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))(workerd@1.20261012.1)(ws@8.21.0):
+  alchemy@2.0.0-beta.61(patch_hash=0afadf1f3698b6e611c6e55d676c63dae758c8b7e088c00b3b4c582e55fa579b)(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(@types/node@22.19.11)(@types/react@19.2.14)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260702.1)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.1)(kysely@0.29.2)(mysql2@3.24.4(@types/node@22.19.11))(pg@8.22.0)(postgres@3.4.9)(sql.js@1.14.1))(effect@4.0.0-beta.103)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))(workerd@1.20261012.1)(ws@8.22.2):
     dependencies:
       '@alchemy.run/node-utils': 0.0.5
       '@aws-sdk/credential-providers': 3.1080.0
       '@clack/prompts': 0.11.0
-      '@distilled.cloud/aws': 0.28.2(effect@4.0.0-beta.93)
-      '@distilled.cloud/axiom': 0.28.2(effect@4.0.0-beta.93)
-      '@distilled.cloud/cloudflare': 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93)
+      '@distilled.cloud/aws': 0.28.2(effect@4.0.0-beta.103)
+      '@distilled.cloud/axiom': 0.28.2(effect@4.0.0-beta.103)
+      '@distilled.cloud/cloudflare': 0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103)
       '@distilled.cloud/cloudflare-rolldown-plugin': 0.12.2(rolldown@1.0.1)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(workerd@1.20261012.1)
-      '@distilled.cloud/cloudflare-runtime': 0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93))(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(effect@4.0.0-beta.93)
-      '@distilled.cloud/cloudflare-vite-plugin': 0.12.2(@distilled.cloud/cloudflare-runtime@0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93))(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(effect@4.0.0-beta.93))(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.93))(@effect/platform-node@4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1))(effect@4.0.0-beta.93)(rolldown@1.0.1)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(workerd@1.20261012.1)
-      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.93)
-      '@distilled.cloud/neon': 0.28.2(effect@4.0.0-beta.93)
-      '@distilled.cloud/planetscale': 0.28.2(effect@4.0.0-beta.93)
-      '@effect/vitest': 4.0.0-beta.93(effect@4.0.0-beta.93)(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))
+      '@distilled.cloud/cloudflare-runtime': 0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103))(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(effect@4.0.0-beta.103)
+      '@distilled.cloud/cloudflare-vite-plugin': 0.12.2(@distilled.cloud/cloudflare-runtime@0.12.2(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103))(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(effect@4.0.0-beta.103))(@distilled.cloud/cloudflare@0.28.2(patch_hash=a8fbc099fe517a0fd8c7fe2dda6d74f8fbf5fe381e0880f7641586b09f9609ba)(effect@4.0.0-beta.103))(@effect/platform-node@4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1))(effect@4.0.0-beta.103)(rolldown@1.0.1)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1))(workerd@1.20261012.1)
+      '@distilled.cloud/core': 0.28.2(effect@4.0.0-beta.103)
+      '@distilled.cloud/neon': 0.28.2(effect@4.0.0-beta.103)
+      '@distilled.cloud/planetscale': 0.28.2(effect@4.0.0-beta.103)
+      '@effect/vitest': 4.0.0-beta.93(effect@4.0.0-beta.103)(vitest@5.0.4(@opentelemetry/api@1.9.1)(@types/node@22.19.11)(vite@8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)))
       '@libsql/client': 0.17.4
       '@octokit/rest': 22.0.1
       '@octokit/webhooks': 14.2.0
@@ -10253,7 +10272,7 @@ snapshots:
       '@types/aws-lambda': 8.10.162
       aws4fetch: 1.0.20
       capnweb: 0.6.1
-      effect: 4.0.0-beta.93
+      effect: 4.0.0-beta.103
       fast-glob: 3.3.3
       fast-xml-parser: 5.12.0
       ink: 6.8.0(@types/react@19.2.14)(react@19.2.4)
@@ -10269,11 +10288,11 @@ snapshots:
       undici: 7.30.1
       yaml: 2.9.1
     optionalDependencies:
-      '@effect/platform-node': 4.0.0-beta.93(effect@4.0.0-beta.93)(ioredis@5.11.1)
+      '@effect/platform-node': 4.0.0-beta.103(effect@4.0.0-beta.103)(ioredis@5.11.1)
       drizzle-kit: 0.31.10
       drizzle-orm: 0.45.2(@cloudflare/workers-types@4.20260702.1)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.1)(kysely@0.29.2)(mysql2@3.24.4(@types/node@22.19.11))(pg@8.22.0)(postgres@3.4.9)(sql.js@1.14.1)
       vite: 8.3.4(@types/node@22.19.11)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.1)
-      ws: 8.21.0
+      ws: 8.22.2
     transitivePeerDependencies:
       - '@types/node'
       - '@types/react'
@@ -10866,10 +10885,10 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@4.0.0-beta.93:
+  effect@4.0.0-beta.103:
     dependencies:
       '@standard-schema/spec': 1.1.0
-      fast-check: 4.8.0
+      fast-check: 4.10.2
       find-my-way-ts: 0.1.6
       ini: 7.0.0
       kubernetes-types: 1.30.0
@@ -11055,7 +11074,7 @@ snapshots:
     dependencies:
       eventsource-parser: 3.0.8
 
-  everyapp@0.3.0-rc.14(@types/node@22.19.11):
+  everyapp@0.3.0(@types/node@22.19.11):
     dependencies:
       '@cloudflare/config': 0.24.1
       '@inquirer/prompts': 8.7.5(@types/node@22.19.11)
@@ -11146,7 +11165,7 @@ snapshots:
 
   extend@3.0.2: {}
 
-  fast-check@4.8.0:
+  fast-check@4.10.2:
     dependencies:
       pure-rand: 8.4.1
 
@@ -13851,6 +13870,8 @@ snapshots:
   wrappy@1.0.2: {}
 
   ws@8.21.0: {}
+
+  ws@8.22.2: {}
 
   wsl-utils@1.0.0:
     dependencies:

@@ -6,6 +6,7 @@ import {
   agentFromRedirectUri,
   readClaimCookie,
 } from "@/server/auth/guest-cookies";
+import { isChatGptCallback } from "@/server/auth/chatgpt-sign-in";
 import { AuthRepository } from "@/server/auth/repositories/AuthRepository";
 import { GuestAccountRepository } from "@/server/auth/repositories/GuestAccountRepository";
 import { captureServerEvent } from "@/server/lib/posthog";
@@ -15,6 +16,7 @@ const emailSignUpBodySchema = z.object({ callbackURL: z.string() });
 type SignUpContext =
   | {
       path?: string;
+      params?: unknown;
       body?: unknown;
       headers?: Headers;
       request?: Request;
@@ -23,8 +25,8 @@ type SignUpContext =
   | undefined;
 
 /**
- * `auth:sign_up_completed`, sent once the user row exists. Google sign-ups end
- * in a full-page redirect, so the browser never reports them as complete.
+ * `auth:sign_up_completed`, sent once the user row exists. Google and ChatGPT
+ * sign-ups end in a full-page redirect, so the browser never reports them as complete.
  * `entry` separates sign-ups an MCP client's OAuth consent started (the
  * authorize URL rides along as the sign-up redirect) from app sign-ups.
  */
@@ -88,7 +90,8 @@ export async function saveSignUpSource(userId: string, ctx: SignUpContext) {
 }
 
 function signUpMethod(ctx: SignUpContext) {
-  return ctx?.path === "/sign-up/email" ? "email" : "google";
+  if (ctx?.path === "/sign-up/email") return "email";
+  return isChatGptCallback(ctx ?? undefined) ? "chatgpt" : "google";
 }
 
 /** Where the new user goes after sign-up. */
