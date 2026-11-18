@@ -1,6 +1,6 @@
 /* eslint-disable max-lines -- the one production stack: every Worker, binding, var and secret is declared here */
 import * as Alchemy from "alchemy";
-import * as Cloudflare from "alchemy/Cloudflare";
+import * as Cloudflare from "@alchemy.run/cloudflare";
 import * as CfWorkers from "@distilled.cloud/cloudflare/workers";
 import * as ZeroTrust from "@distilled.cloud/cloudflare/zero-trust";
 import * as Config from "effect/Config";
@@ -94,10 +94,10 @@ const makeResources = (stage: string, usesD1: boolean) => {
       ? {
           DB: Cloudflare.D1.Database("DB", {
             name: prod ? PROD_NAMES.d1 : `open-seo-db-${stage}`,
-            // drizzle-generated SQL migrations; tracked in the same
-            // wrangler-compatible table prod already uses.
-            migrationsDir: "drizzle/sqlite",
-            migrationsTable: "d1_migrations",
+            // drizzle-generated SQL migrations. Alchemy keeps its own
+            // bookkeeping table and, on the first deploy, copies the applied
+            // history from the wrangler-compatible d1_migrations table.
+            migrations: { dir: "drizzle/sqlite", table: "d1_migrations" },
           }).pipe(keep),
         }
       : {}),
@@ -146,7 +146,7 @@ const hyperdriveBinding = (hyperdriveId: string) => ({
 });
 
 const optionalVar = (name: string) =>
-  Config.string(name).pipe(
+  Config.String(name).pipe(
     Config.withDefault(""),
     Config.map((value) => value.trim()),
   );
@@ -170,7 +170,7 @@ const readCustomDomain = (prod: boolean) =>
   });
 
 const optionalSecret = (name: string) =>
-  Config.redacted(name).pipe(Config.withDefault(Redacted.make("")));
+  Config.Redacted(name).pipe(Config.withDefault(Redacted.make("")));
 
 /**
  * LOCAL PATCH (shovelware): KEEP_WORKER_SECRETS=1 leaves the Workers' secrets
@@ -178,19 +178,22 @@ const optionalSecret = (name: string) =>
  * deploy then sends no secret it was not given and asks Cloudflare to keep the
  * live ones, so the env file holds no secrets at all.
  */
-const keepWorkerSecrets = Config.string("KEEP_WORKER_SECRETS").pipe(
+const keepWorkerSecrets = Config.String("KEEP_WORKER_SECRETS").pipe(
   Config.withDefault(""),
   Config.map((value) => value.trim() === "1"),
 );
 
 /** Drops empty secrets, which would otherwise overwrite the kept ones. */
-const withoutEmptySecrets = <T extends Record<string, unknown>>(env: T): T =>
-  Object.fromEntries(
-    Object.entries(env).filter(
-      ([, value]) =>
-        !(Redacted.isRedacted(value) && Redacted.value(value) === ""),
-    ),
-  ) as T;
+const withoutEmptySecrets = <T extends Record<string, unknown>>(env: T) => {
+  const kept: Partial<T> = { ...env };
+  for (const key in kept) {
+    const value = kept[key];
+    if (Redacted.isRedacted(value) && Redacted.value(value) === "") {
+      delete kept[key];
+    }
+  }
+  return kept;
+};
 
 const accessScopeHint =
   " (if this is a permissions error, re-run `pnpm alchemy login deploy/alchemy/alchemy.run.ts --configure`, answer yes to “Customize OAuth scopes?”, and select access:write alongside the defaults)";
@@ -377,6 +380,24 @@ const dataEnv = {
   OPENSEO_TELEMETRY_DISABLED: optionalVar("OPENSEO_TELEMETRY_DISABLED"),
 };
 
+/**
+ * The resolved dataEnv values plus how the Workers treat secrets: from the
+ * env file (default), or kept as they are on Cloudflare (KEEP_WORKER_SECRETS).
+ */
+const readSecretHandling = Effect.gen(function* () {
+  const keepSecrets = yield* keepWorkerSecrets;
+  const data = yield* Config.all(dataEnv);
+  if (!keepSecrets && !Redacted.value(data.DATAFORSEO_API_KEY)) {
+    return yield* Effect.die(new Error("Set DATAFORSEO_API_KEY."));
+  }
+  return {
+    data,
+    secretHandling: keepSecrets ? { keepBindings: ["secret_text"] } : {},
+    workerEnv: <T extends Record<string, unknown>>(env: T) =>
+      keepSecrets ? withoutEmptySecrets(env) : env,
+  };
+});
+
 export default Alchemy.Stack(
   "open-seo",
   {
@@ -393,21 +414,12 @@ export default Alchemy.Stack(
     // app's own default in src/lib/auth-mode.ts), never public hosted signup.
     // New self-host deployments get AUTH_MODE=password from deploy/.env.selfhost.example;
     // hosted/local_noauth must be set explicitly.
-    const authMode = yield* Config.string("AUTH_MODE").pipe(
+    const authMode = yield* Config.String("AUTH_MODE").pipe(
       Config.withDefault("cloudflare_access"),
     );
     const databaseProvider = yield* optionalVar("DATABASE_PROVIDER");
-    const keepSecrets = yield* keepWorkerSecrets;
-    const data = yield* Config.all(dataEnv);
-    if (!keepSecrets && !Redacted.value(data.DATAFORSEO_API_KEY)) {
-      return yield* Effect.die(new Error("Set DATAFORSEO_API_KEY."));
-    }
-    const secretHandling = keepSecrets
-      ? { keepBindings: ["secret_text"] }
-      : {};
-    const workerEnv = <T extends Record<string, unknown>>(env: T): T =>
-      keepSecrets ? withoutEmptySecrets(env) : env;
-    const hyperdriveId = prod ? yield* Config.string("HYPERDRIVE_ID") : "";
+    const { data, secretHandling, workerEnv } = yield* readSecretHandling;
+    const hyperdriveId = prod ? yield* Config.String("HYPERDRIVE_ID") : "";
     if (prod && (authMode !== "hosted" || databaseProvider !== "postgres")) {
       return yield* Effect.die(
         new Error(
@@ -493,7 +505,7 @@ export default Alchemy.Stack(
       name: `${workerName(stage)}-audit`,
       main: "./dist/open_seo_audit/index.js",
       bundle: false,
-      url: false,
+      workersDev: false,
       compatibility: {
         date: wrangler.compatibility_date,
         flags: wrangler.compatibility_flags,
@@ -556,7 +568,7 @@ export default Alchemy.Stack(
       name: workerName(stage),
       // Prod serves the real domains; the zone is inferred from the hostname.
       domain: prod
-        ? ["app.openseo.so", "www.app.openseo.so"]
+        ? { name: "app.openseo.so", aliases: ["www.app.openseo.so"] }
         : customDomain || undefined,
       // Prebuilt worker from `vite build` (@cloudflare/vite-plugin). The entry
       // exports the DO + WorkflowEntrypoint classes (re-exported by

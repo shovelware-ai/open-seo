@@ -8,7 +8,7 @@
 // `open-seo-<stage>` naming stays comment-synced (and is backstopped by the
 // workflow's Access verify step).
 
-import * as Cloudflare from "alchemy/Cloudflare";
+import * as Cloudflare from "@alchemy.run/cloudflare";
 import * as Config from "effect/Config";
 import * as Effect from "effect/Effect";
 
@@ -29,7 +29,7 @@ export const previewWildcard = (subdomain: string) =>
 
 export const readWorkersSubdomain = ({ required }: { required: boolean }) =>
   Effect.gen(function* () {
-    const subdomain = (yield* Config.string("WORKERS_SUBDOMAIN").pipe(
+    const subdomain = (yield* Config.String("WORKERS_SUBDOMAIN").pipe(
       Config.withDefault(""),
     )).trim();
     if (subdomain.endsWith(".workers.dev") || (!subdomain && !required)) {
@@ -45,7 +45,7 @@ export const readWorkersSubdomain = ({ required }: { required: boolean }) =>
 /** Reads ACCESS_ALLOWED_EMAILS; dies with `remedy` when none are set. */
 export const requireAllowedEmails = (remedy: string) =>
   Effect.gen(function* () {
-    const emails = (yield* Config.string("ACCESS_ALLOWED_EMAILS").pipe(
+    const emails = (yield* Config.String("ACCESS_ALLOWED_EMAILS").pipe(
       Config.withDefault(""),
     ))
       .split(",")
