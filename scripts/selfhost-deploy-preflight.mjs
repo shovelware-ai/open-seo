@@ -28,7 +28,9 @@ if (major < 22 || (major === 22 && minor < 6)) {
   );
 }
 
-const envFile = ".env.selfhost";
+// LOCAL PATCH (shovelware): SELFHOST_ENV_FILE points at a settings file
+// kept outside the checkout.
+const envFile = process.env.SELFHOST_ENV_FILE || ".env.selfhost";
 if (!existsSync(envFile)) {
   fail(
     `${em(envFile)} not found — create it first:`,
@@ -43,7 +45,8 @@ for (const line of readFileSync(envFile, "utf8").split("\n")) {
   const match = /^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/.exec(line);
   if (match) env[match[1]] = match[2].replace(/^(["'])(.*)\1$/, "$2");
 }
-if (!env.DATAFORSEO_API_KEY) {
+// KEEP_WORKER_SECRETS=1: the secrets live on the Workers, not in this file.
+if (env.KEEP_WORKER_SECRETS !== "1" && !env.DATAFORSEO_API_KEY) {
   fail(
     `${em("DATAFORSEO_API_KEY")} is not set in ${envFile} — see docs/DATAFORSEO_API_KEY.md for how to get one.`,
   );

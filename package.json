@@ -21,7 +21,7 @@
     "lint:fix": "oxlint . --type-aware --fix",
     "preview": "npm run build && vite preview --port 3001",
     "deploy": "sh scripts/deploy-guard.sh check && npm run db:migrate:prod && npm run build && sh scripts/deploy-guard.sh wrangler deploy -c dist/open_seo_audit/wrangler.json && sh scripts/deploy-guard.sh wrangler deploy",
-    "deploy:selfhost": "sh scripts/deploy-guard.sh check && node scripts/selfhost-deploy-preflight.mjs && pnpm build:report-widgets && vite build --mode selfhost && tsc --noEmit && pnpm alchemy deploy deploy/alchemy/alchemy.run.ts --env-file .env.selfhost --stage selfhost",
+    "deploy:selfhost": "sh scripts/deploy-guard.sh check && node scripts/selfhost-deploy-preflight.mjs && pnpm build:report-widgets && vite build --mode selfhost && tsc --noEmit && pnpm alchemy deploy deploy/alchemy/alchemy.run.ts --env-file ${SELFHOST_ENV_FILE:-.env.selfhost} --stage selfhost",
     "deploy:prod": "gh workflow run deploy-production.yml --repo bensenescu/open-seo --ref main",
     "deploy:web": "gh workflow run deploy-website.yml --repo bensenescu/open-seo --ref main",
     "deploy:preview": "sh scripts/deploy-guard.sh check && pnpm build:report-widgets && vite build --mode preview && pnpm alchemy deploy deploy/alchemy/alchemy.run.ts --env-file .env.preview",

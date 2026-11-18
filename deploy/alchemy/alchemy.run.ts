@@ -172,6 +172,26 @@ const readCustomDomain = (prod: boolean) =>
 const optionalSecret = (name: string) =>
   Config.redacted(name).pipe(Config.withDefault(Redacted.make("")));
 
+/**
+ * LOCAL PATCH (shovelware): KEEP_WORKER_SECRETS=1 leaves the Workers' secrets
+ * to Cloudflare (set with `wrangler secret put`) instead of the env file. The
+ * deploy then sends no secret it was not given and asks Cloudflare to keep the
+ * live ones, so the env file holds no secrets at all.
+ */
+const keepWorkerSecrets = Config.string("KEEP_WORKER_SECRETS").pipe(
+  Config.withDefault(""),
+  Config.map((value) => value.trim() === "1"),
+);
+
+/** Drops empty secrets, which would otherwise overwrite the kept ones. */
+const withoutEmptySecrets = <T extends Record<string, unknown>>(env: T): T =>
+  Object.fromEntries(
+    Object.entries(env).filter(
+      ([, value]) =>
+        !(Redacted.isRedacted(value) && Redacted.value(value) === ""),
+    ),
+  ) as T;
+
 const accessScopeHint =
   " (if this is a permissions error, re-run `pnpm alchemy login deploy/alchemy/alchemy.run.ts --configure`, answer yes to “Customize OAuth scopes?”, and select access:write alongside the defaults)";
 
@@ -299,7 +319,8 @@ const dataEnv = {
   // AUTH_MODE, DATABASE_PROVIDER, BETTER_AUTH_URL, TEAM_DOMAIN, POLICY_AUD,
   // and OPENSEO_OPERATOR_SECRET are stage-dependent and set in the stack body
   // below, which also replaces an unset BETTER_AUTH_SECRET in password mode.
-  DATAFORSEO_API_KEY: Config.redacted("DATAFORSEO_API_KEY"),
+  // Required unless KEEP_WORKER_SECRETS keeps the one already on the Workers.
+  DATAFORSEO_API_KEY: optionalSecret("DATAFORSEO_API_KEY"),
   BYPASS_EMAIL_VERIFICATION: optionalVar("BYPASS_EMAIL_VERIFICATION"),
   BETTER_AUTH_SECRET: optionalSecret("BETTER_AUTH_SECRET"),
   CRAWLER_ACCESS_SECRET: optionalSecret("CRAWLER_ACCESS_SECRET"),
@@ -376,6 +397,16 @@ export default Alchemy.Stack(
       Config.withDefault("cloudflare_access"),
     );
     const databaseProvider = yield* optionalVar("DATABASE_PROVIDER");
+    const keepSecrets = yield* keepWorkerSecrets;
+    const data = yield* Config.all(dataEnv);
+    if (!keepSecrets && !Redacted.value(data.DATAFORSEO_API_KEY)) {
+      return yield* Effect.die(new Error("Set DATAFORSEO_API_KEY."));
+    }
+    const secretHandling = keepSecrets
+      ? { keepBindings: ["secret_text"] }
+      : {};
+    const workerEnv = <T extends Record<string, unknown>>(env: T): T =>
+      keepSecrets ? withoutEmptySecrets(env) : env;
     const hyperdriveId = prod ? yield* Config.string("HYPERDRIVE_ID") : "";
     if (prod && (authMode !== "hosted" || databaseProvider !== "postgres")) {
       return yield* Effect.die(
@@ -432,7 +463,7 @@ export default Alchemy.Stack(
     // Password accounts need a session secret. The self-host env file sets
     // none: the deploy mints one and keeps it in alchemy state, so redeploys
     // keep every session valid. An explicit BETTER_AUTH_SECRET always wins.
-    const configuredAuthSecret = yield* dataEnv.BETTER_AUTH_SECRET;
+    const configuredAuthSecret = data.BETTER_AUTH_SECRET;
     const betterAuthSecret =
       authMode === "password" && !Redacted.value(configuredAuthSecret)
         ? yield* Alchemy.makeRandom("BetterAuthSecret")
@@ -480,7 +511,8 @@ export default Alchemy.Stack(
         enabled: wrangler.observability?.enabled ?? true,
         traces: { enabled: wrangler.observability?.traces?.enabled ?? false },
       },
-      env: {
+      ...secretHandling,
+      env: workerEnv({
         ...(resources.DB ? { DB: resources.DB } : {}),
         KV: resources.KV,
         R2: resources.R2,
@@ -491,13 +523,13 @@ export default Alchemy.Stack(
         // WEB_BOT_AUTH_JWK (request signing). No auth/OAuth/Loops/Turnstile
         // secrets.
         BROWSER: Cloudflare.Browser(),
-        CRAWLER_ACCESS_SECRET: dataEnv.CRAWLER_ACCESS_SECRET,
-        WEB_BOT_AUTH_JWK: dataEnv.WEB_BOT_AUTH_JWK,
-        CONTEXT_API_KEY: dataEnv.CONTEXT_API_KEY,
-        DATAFORSEO_API_KEY: dataEnv.DATAFORSEO_API_KEY,
-        AUTUMN_SECRET_KEY: dataEnv.AUTUMN_SECRET_KEY,
-        POSTHOG_PUBLIC_KEY: dataEnv.POSTHOG_PUBLIC_KEY,
-        POSTHOG_HOST: dataEnv.POSTHOG_HOST,
+        CRAWLER_ACCESS_SECRET: data.CRAWLER_ACCESS_SECRET,
+        WEB_BOT_AUTH_JWK: data.WEB_BOT_AUTH_JWK,
+        CONTEXT_API_KEY: data.CONTEXT_API_KEY,
+        DATAFORSEO_API_KEY: data.DATAFORSEO_API_KEY,
+        AUTUMN_SECRET_KEY: data.AUTUMN_SECRET_KEY,
+        POSTHOG_PUBLIC_KEY: data.POSTHOG_PUBLIC_KEY,
+        POSTHOG_HOST: data.POSTHOG_HOST,
         AUTH_MODE: authMode,
         DATABASE_PROVIDER: databaseProvider || "d1",
         // This worker is the code home of the scratchpad DO and the
@@ -513,7 +545,7 @@ export default Alchemy.Stack(
           prod ? "site-audit-workflow" : `site-audit-workflow-${stage}`,
           { className: "SiteAuditWorkflow" },
         ),
-      },
+      }),
     }).pipe(Alchemy.RemovalPolicy.retain(prod));
 
     if (prod) {
@@ -560,9 +592,10 @@ export default Alchemy.Stack(
           : undefined,
       // Scheduled rank checks — src/server.ts `scheduled` handler.
       crons: wrangler.triggers.crons,
-      env: {
+      ...secretHandling,
+      env: workerEnv({
         ...resources,
-        ...dataEnv,
+        ...data,
         AUTH_MODE: authMode,
         DATABASE_PROVIDER: databaseProvider || "d1",
         BETTER_AUTH_URL: authUrl,
@@ -648,7 +681,7 @@ export default Alchemy.Stack(
             ),
           ]),
         ),
-      },
+      }),
     }).pipe(
       // Prod adopts the live worker serving app.openseo.so; never delete it
       // on destroy. (Workflow registrations aren't individually retainable —
