@@ -120,6 +120,11 @@ overrides:
   isomorphic-git: "^1.38.10"
   # GHSA-3f7j-7jwc-fxfj, GHSA-4vjg-vx72-qq4g — via shadcn > @dotenvx/dotenvx
   systeminformation: "^5.33.16"
+  # GHSA-g3hv-75wg-m249 — @ts-morph/common 0.27 (via shadcn) and just-bash 3
+  # (via @cloudflare/think, in the Worker) ask minimatch ^10; 11 keeps the
+  # same minimatch()/Minimatch API they import.
+  "@ts-morph/common>minimatch": "^11.0.1"
+  "just-bash>minimatch": "^11.0.1"
 
 
 # LOCAL PATCH (shovelware): passes a Worker's `keepBindings` prop to
