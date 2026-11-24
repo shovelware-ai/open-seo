@@ -1,6 +1,11 @@
 {
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["worktrees/**/*", "web/**/*", "tests/badseo/**/*", "src/report-widgets/**/*"],
+  "exclude": [
+    "worktrees/**/*",
+    "web/**/*",
+    "tests/badseo/**/*",
+    "src/report-widgets/**/*"
+  ],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,

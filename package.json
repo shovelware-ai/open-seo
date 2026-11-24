@@ -4,7 +4,7 @@
   "sideEffects": [
     "./src/standalone-server.ts"
   ],
-  "version": "0.1.28",
+  "version": "0.1.32",
   "type": "module",
   "packageManager": "pnpm@10.30.1",
   "scripts": {
@@ -92,7 +92,7 @@
     "@better-auth/api-key": "1.7.18",
     "@cloudflare/think": "0.19.0",
     "@cloudflare/workers-oauth-provider": "^1.2.3",
-    "@every-app/sdk": "0.3.0",
+    "@every-app/sdk": "0.4.2",
     "@modelcontextprotocol/client": "2.3.1",
     "@modelcontextprotocol/ext-apps": "2.0.3",
     "@modelcontextprotocol/sdk": "1.32.1",
@@ -113,11 +113,12 @@
     "cloudflare": "^5.2.0",
     "cn": "^0.3.0",
     "country-flag-icons": "^1.6.20",
+    "disposable-email-domains-js": "2.3.0",
     "drizzle-orm": "^0.45.2",
     "fast-xml-parser": "^5.12.0",
     "htmlparser2": "^10.1.0",
     "http-message-sig": "0.3.0",
-    "jose": "^6.0.12",
+    "jose": "^6.2.17",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.542.0",
     "papaparse": "^5.5.3",
@@ -142,10 +143,10 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@alchemy.run/cloudflare": "2.0.0-beta.85",
     "@cloudflare/vite-plugin": "^1.63.1",
     "@cloudflare/vite-plugin-cf": "npm:@cloudflare/vite-plugin@2.0.0-beta.sha-91c870c02",
     "@cloudflare/workers-types": "^4.20260702.1",
-    "@alchemy.run/cloudflare": "2.0.0-beta.85",
     "@distilled.cloud/cloudflare": "1.0.0-rc.18",
     "@effect/platform-node": "4.1.3",
     "@libsql/client": "^0.15.15",
@@ -165,7 +166,7 @@
     "cheerio": "^1.2.0",
     "drizzle-kit": "^0.31.10",
     "effect": "4.1.3",
-    "everyapp": "0.3.0",
+    "everyapp": "0.4.2",
     "knip": "^5.88.1",
     "oxlint": "^1.50.0",
     "oxlint-tsgolint": "^0.15.0",

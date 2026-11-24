@@ -1,5 +1,12 @@
 minimumReleaseAge: 11520
 minimumReleaseAgeExclude:
+  # TEMPORARY (remove after 2026-11-28): disposable-email-domains-js 2.3.0,
+  # published 2026-11-20, carries the current list of throwaway mail domains
+  # that hosted sign-up refuses; the newest release old enough is from
+  # September. Checked before exempting: the tarball rebuilds byte for byte
+  # from the v2.3.0 tag, and its provenance attestation verifies. Exact-pinned
+  # in package.json.
+  - "disposable-email-domains-js@2.3.0"
   # TEMPORARY (remove after 2026-11-04): everyapp 0.3.0-rc.11 depends on
   # @inquirer/prompts 8.7.5 and its parts, published 2026-10-26.
   - "@inquirer/*"
@@ -65,6 +72,8 @@ minimumReleaseAgeExclude:
 # To prune once a parent catches up: delete the line, run `pnpm install`, and
 # keep it deleted if `pnpm audit` stays clean.
 overrides:
+  # Keep every Worker on one zod copy; two copies crowd the isolate heap (#1051).
+  "zod@4": "4.6.7"
   # GHSA-4x5r-pxfx-6jf8 — waiting on @tanstack/devtools-vite
   "@babel/core": "^7.29.6"
   # September 2026 recursion/CPU DoS fixes plus earlier advisories — just-bash/shadcn
@@ -92,12 +101,12 @@ overrides:
   # GHSA-v3rj-xjv7-4jmq — waiting on knip
   smol-toml: "^1.9.1"
   # September 2026 TLS/cache/DoS fixes plus earlier advisories, and the five
-  # October 2026 ones (GHSA-xjj6-f33q-929c and others) — cheerio/miniflare
-  undici: "^7.30.1"
+  # October 2026 ones (GHSA-xjj6-f33q-929c and others) — cheerio/miniflare (undici 8 is fine)
+  "undici@7": "^7.30.1"
   # GHSA-67mh-4wv8-2f99 — update drizzle-kit's legacy loader instead of ignoring it.
   "@esbuild-kit/core-utils>esbuild": "^0.25.12"
   # GHSA-rgj7-g3m4-5g8c, GHSA-wq5f-xc86-pv6w — Miniflare 4 pins 0.34.5; 0.35.5 fixes both.
-  "miniflare>sharp": "0.35.5"
+  "miniflare>sharp": "^0.35.5"
   # September 2026 advisories: keep these fixes within each supported major.
   "@ai-sdk/provider-utils@4": "^4.0.33"
   # GHSA-rmxm-3fg6-px4f: @modelcontextprotocol/sdk accepts ^1.19.9 || ^2.0.5.
@@ -113,7 +122,6 @@ overrides:
   "toml@4": "^4.2.0"
   # Fork (shovelware) fixes, moved here from package.json `pnpm.overrides`:
   # while that field existed pnpm ignored every override in this file.
-  "zod@4": "4.6.7"
   proxy-addr: "^2.0.8"
   seroval: "^1.6.12"
   seroval-plugins: "^1.6.12"
@@ -125,7 +133,8 @@ overrides:
   # same minimatch()/Minimatch API they import.
   "@ts-morph/common>minimatch": "^11.0.1"
   "just-bash>minimatch": "^11.0.1"
-
+  # GHSA-68fv-2mgg-jv7q — via @tailwindcss/vite > @tailwindcss/node (build time)
+  source-map-js: "^1.2.2"
 
 # LOCAL PATCH (shovelware): passes a Worker's `keepBindings` prop to
 # Cloudflare's `keep_bindings`, so KEEP_WORKER_SECRETS deploys keep the
