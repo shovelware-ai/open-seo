@@ -39,5 +39,7 @@ overrides:
   seroval: "^1.6.11"
   vite@7: "^7.3.7"
   source-map-js: "^1.2.2"
+  # GHSA-866g-f22w-33x8 — via ai (shovelware fork)
+  "@ai-sdk/provider-utils@4": "^4.0.33"
   "zod@4": "^4.6.6"
   "@vitest/mocker@4": "^4.1.12"
