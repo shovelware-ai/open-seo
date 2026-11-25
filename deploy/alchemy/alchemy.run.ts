@@ -783,9 +783,19 @@ export default Alchemy.Stack(
               prod ? workflow.name : `${workflow.name}-${stage}`,
               {
                 className: workflow.class_name,
-                scriptName: workflow.script_name
-                  ? auditWorker.workerName
-                  : undefined,
+                // Since alchemy beta.85 the first argument is only the
+                // logical id. A cross-script binding without an explicit
+                // workflowName gets a derived name
+                // ("<worker>-<class>-<hash>") that no workflow is registered
+                // under, and every create() fails with workflow.not_found.
+                ...(workflow.script_name
+                  ? {
+                      scriptName: auditWorker.workerName,
+                      workflowName: prod
+                        ? workflow.name
+                        : `${workflow.name}-${stage}`,
+                    }
+                  : {}),
               },
             ),
           ]),
