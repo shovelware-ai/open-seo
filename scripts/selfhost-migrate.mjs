@@ -37,6 +37,41 @@ try {
       ],
     }),
   );
+  const execute = (sql) =>
+    JSON.parse(
+      wrangler([
+        "d1",
+        "execute",
+        "DB",
+        "--remote",
+        "-c",
+        config,
+        "--json",
+        "--command",
+        sql,
+      ]),
+    )[0].results;
+
+  // Databases first migrated by alchemy beta.61 have its d1_migrations table:
+  // `id TEXT`, `applied_at TEXT NOT NULL` with no default. wrangler inserts
+  // only `name`, so every pending migration fails on applied_at. Rebuild the
+  // table once into wrangler's own shape, keeping every row. D1 runs the
+  // statements of one command as a single batch, so it lands whole or not at all.
+  const [table] = execute(
+    "SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'd1_migrations'",
+  );
+  if (table && !/applied_at[^,]*DEFAULT/i.test(table.sql)) {
+    console.log("Converting d1_migrations to wrangler's table layout");
+    execute(
+      [
+        "CREATE TABLE d1_migrations_wrangler (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)",
+        "INSERT INTO d1_migrations_wrangler (id, name, applied_at) SELECT CAST(id AS INTEGER), name, applied_at FROM d1_migrations",
+        "DROP TABLE d1_migrations",
+        "ALTER TABLE d1_migrations_wrangler RENAME TO d1_migrations",
+      ].join("; "),
+    );
+  }
+
   execFileSync(
     "npx",
     ["wrangler", "d1", "migrations", "apply", "DB", "--remote", "-c", config],
