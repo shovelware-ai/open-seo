@@ -53,3 +53,6 @@ dist/
 
 # built by `stripe apps upload`
 deploy/stripe-app/.build/
+
+# Local git worktrees created by the wrapper; never part of the repo
+/worktrees/
